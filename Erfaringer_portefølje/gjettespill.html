@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+<style>
+input {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    max-width: 100pxs;
+    border-color: grey;
+    padding: 5px;
+    margin: 5px;
+    margin-top: 20px;
+}
+
+label {
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    max-width: 200px;
+
+}
+
+.p {
+    background-color: white;
+    border-radius: 100px;
+    padding: 10px;
+    max-width: 300px;
+    width: 200px;   
+    margin-left: -310px;
+}
+
+button {
+    color: black;
+    background-color: yellow;
+    padding: 10px;
+    margin: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+
+.button2 {
+    color: black;
+    background-color: greenyellow;
+    padding: 10px;
+    margin: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+img {
+    border-radius: 100px;
+    padding: 0px;
+    margin: 0px;
+    width: 100px;
+    height: 100px;
+}
+
+#backg {
+    background-color: black;
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+
+#anime {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border-radius: 100px;
+}
+
+table,
+td {
+    border: 1px solid #333;
+}
+
+</style>
+
+<label>Your Input: </label>
+<input type="number" id="you">  
+
+<button id="pressed" onclick="start()">Send</button>
+
+<p class="p" id="svar"></p>
+
+
+<div id="but"></div>
+<div id="but2"></div>
+
+<!--audio-->
+<audio id="myAudio">
+    <source src="150223__pumodi__victory-2.mp3" type="audio/mpeg">
+</audio>
+
+<table id="tabl">
+    <colgroup span="2"></colgroup>
+    <tr>
+        <th> S c o r e b o a r d</th>
+    </tr>
+    <tr>
+        <td>number</td>
+        <td>score</td>
+    </tr>
+</table>
+
+<div id="backg">
+    <div id="anime">
+        <img src="51zLZbEVSTL._AC_SL1200_.jpg">
+    </div>
+</div>
+
+<script>
+tabl.style.display = "none"
+var data = Random(100)
+console.log("data " + data)
+function Random(max) {
+    return Math.floor(Math.random() * max);
+}
+
+var scoreboard = {};
+var score = 0;
+var l = 0;
+
+
+function start() {
+// audio js
+    var audio = document.getElementById("myAudio"); 
+    var green = document.getElementById("svar").style.backgroundColor = "green"
+
+
+    //if else
+    var num = Number(document.getElementById("you").value);
+    if (num > data && num < 100) {
+        document.getElementById("svar").innerText = "det må bli lavere"
+        document.getElementById("you").value = ""
+        score = score - 1;
+        animation.play();
+    } 
+    if (num < data && num < 100) {
+        document.getElementById("svar").innerText = "det må bli større"
+        document.getElementById("you").value = ""
+        score = score - 1;
+        animation.play();
+    } 
+    if (num === data && num < 100) {
+        document.getElementById("svar").innerText = "det er riktig"
+        document.getElementById("you").value = ""
+        document.getElementById("but").innerHTML = "<button id='b' class='button2' onclick='omstart()'>Next Round</button><br>"
+        document.getElementById("but2").innerHTML = "<button class='button2' onclick='restart()'>Restart</button>"
+        tabl.style.display = "block"
+        back.style.display = "block"
+        score = score + 10;
+        data = Random(100);
+        console.log("data " + data);
+        console.log("score " + score);
+        audio.play();
+        noe();
+        animation.play();
+    }
+    if (num > 100 || num < 0) {
+        document.getElementById("svar").innerText = "error, must be betwine 0 and 100"
+        document.getElementById("you").value = ""
+        animation.play();
+    } 
+}
+    // animation
+let animation = anime({
+    targets: '.p',
+    translateX: 310,
+    duration: 2000,
+    easing: 'linear',
+    direction: 300,
+    autoplay: false,
+    });
+
+// restart
+function restart() {
+    location.reload();
+}
+
+// animation backg == none
+var back = document.getElementById("backg");
+back.style.display = "none";
+
+    //omstart
+function omstart() {
+    l = l + 1;
+    //animasjon revers
+    let animation1 = anime({
+    targets: '.p',
+    translateX: -310,
+    duration: 2000,
+    easing: 'linear',
+    direction: 300,
+    autoplay: true,
+    });
+    //svar = backgroundcolor    
+    back.style.display = "none";
+    document.getElementById("b").remove();
+    document.getElementById("you").value = "";
+    document.getElementById("svar").innerText = "";
+    //make a ny random number
+    data = Random(100);
+    console.log("data " + data);
+    console.log("score " + score);
+    // table
+    var tabl = document.getElementById("tabl");
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    td1.append(score);
+    td2.append(l);
+    tr.append(td2, td1);
+    tabl.append(tr);
+}
+
+
+// js animation
+function noe() {
+    let id = null;
+    const elem = document.getElementById("anime");
+    let haight = Number(elem.style.top);
+    let leangth = Number(elem.style.left);
+    elem.style.top = 0 + "px"; 
+    elem.style.left = 0 + "px"; 
+    clearInterval(id);
+    id = setInterval(frame, 5);
+    function frame() {
+        if (haight == 300 && leangth == 300) {
+            clearInterval(id);
+            id2 = setInterval(fr, 5);
+            var len = 300;
+            function fr() {
+                if (len == 0) {
+                    clearInterval(id2); 
+                    id3 = setInterval(fra, 5);
+                    var hei = 300;
+                    function fra() {
+                        if (hei == 0) {
+                            clearInterval(id3);
+                        } else { 
+                            hei = hei - 1;
+                            elem.style.top = hei + "px"; 
+                        }
+                    }
+                } else { 
+                    len = len - 1;
+                    elem.style.left = len + "px"; 
+                }
+            }   
+        } else {
+            leangth++;
+            haight++;
+            elem.style.top = leangth + "px"; 
+            elem.style.left = haight + "px"; 
+        }
+    }
+}
+</script>
+</body>
+</html>
