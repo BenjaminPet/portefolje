@@ -112,6 +112,9 @@ img {
 }
 a {
     margin: 100px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
 }
 .a {
     margin: 0px;
