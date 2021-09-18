@@ -1,0 +1,219 @@
+<html>
+<head>
+
+</head>
+<body>
+<style>
+body {
+  background-color: black;
+}
+
+.text {
+  color: white;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+h2 {
+  background-color: white;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  text-shadow: 1px 1px 1px black;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+p {
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+ul {
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+input {
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  border-color: whitesmoke;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  margin: 10px;
+  padding: 5px;
+}
+
+button {
+  border-radius: 10px;
+  font-size: 30px;
+  background-color: greenyellow;
+  color: black;
+  border-color: whitesmoke;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  margin: 10px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+</style>
+
+<!--questions-->
+<h2>Questions</h2>
+    <p>Fra en skala fra 1 til 5 hvor mye likte du spillet</p><br> 
+    <form id="form">
+      <input name="stars" id="one" type="radio" value="1">
+      <label class="text">1</label><br>
+      <input name="stars" id="two" type="radio" value="2">
+      <label class="text">2</label><br>
+      <input name="stars" id="tree" type="radio" value="3">
+      <label class="text">3</label><br>
+      <input name="stars" id="four" type="radio" value="4">
+      <label class="text">4</label><br>
+      <input name="stars" id="five" type="radio" value="5">
+      <label class="text">5</label><br>
+      <p style="color: red;" id="errorra"></p>
+      <br><br>
+      <input name="stars" type="text" id="tekst">
+      <p style="color: red;" id="errortxt"></p>
+      <br>
+      <p style="color: green;" id="riktig"></p>
+      <p style="color: red;" id="error1"></p>
+      <br><br>
+      <button id="submit" type="submit" onclick="exstra()">Submit</button>
+      <br><br>
+      <button id="submit" type="button" onclick="hallo()">hallo</button>
+      <br><br>
+      <button id="submit" type="button" onclick="delet()">delete</button>
+    </form>
+    <br><br>
+    <ul id="app"></ul>
+
+
+    <ul id="liste"></ul><br>
+    <br>
+    <ul id="lis"></ul>
+    
+    
+<!--firebase location-->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBXwoI1lTbsYD9nuqaIkucXlBCiF4cZRsg",
+    authDomain: "snake-a0033.firebaseapp.com",
+    databaseURL: "https://snake-a0033-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "snake-a0033",
+    storageBucket: "snake-a0033.appspot.com",
+    messagingSenderId: "822034855812",
+    appId: "1:822034855812:web:9f085102f6f197e99f0fd1",
+    measurementId: "G-SRBX4SSW7V"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  let db=firebase.firestore();
+</script>
+
+
+<!--firebase code-->
+<script>
+  let form = document.getElementById("form");
+  let tekst = document.getElementById("tekst");
+  let submit = document.getElementById("submit");
+  let selectedButton;
+
+  form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      
+  document.getElementsByName("stars").forEach(function(noe){
+      if(noe.checked){
+          selectedButton = noe.value
+      };
+      
+  })
+  let docDataReview = {
+      tekst: tekst.value,
+      rating: selectedButton
+  };
+  db.collection("rew").doc().set(docDataReview).then(()=>{
+      console.log("document succesfully written!");
+      window.location.reload();
+  }).catch(err => console.log(err));
+  });
+
+  function hentData(doc){
+      let html = document.createElement('li');
+      html.innerHTML += "Tilbakemelding: " + doc.data().tekst + ", Rating: " + doc.data().rating + "/5"; 
+      JSON.stringify(html);
+      let list = document.getElementById("liste");
+      list.appendChild(html);
+
+  }
+
+  db.collection("rew").get().then(snapshot => {
+      snapshot.docs.forEach(doc => {
+          hentData(doc)
+      });
+  }).catch(err => {
+      console.log(err);
+  })
+</script>
+
+
+<!--error code-->
+<script>
+function exstra() {
+  if (tekst.value != "") {
+    if (document.getElementById('one').checked || document.getElementById('two').checked || document.getElementById('tree').checked ||
+    document.getElementById('four').checked || document.getElementById('five').checked) {
+      document.getElementById("error1").innerHTML = "";
+      document.getElementById("riktig").innerHTML = "riktig";
+      document.getElementById("errortxt").innerHTML = ""
+      document.getElementById("errorra").innerHTML = ""
+      alert("1")
+    } else {
+      document.getElementById("error1").innerHTML = "error";
+      document.getElementById("riktig").innerHTML = ""
+      document.getElementById("errortxt").innerHTML = ""
+      document.getElementById("errorra").innerHTML = "du må gi en vurdering";
+      alert("2")
+    }
+  } else {
+    if (document.getElementById('one').checked || document.getElementById('two').checked || document.getElementById('tree').checked ||
+    document.getElementById('four').checked || document.getElementById('five').checked) {
+      document.getElementById("error1").innerHTML = "error";
+      document.getElementById("riktig").innerHTML = ""
+      document.getElementById("errorra").innerHTML = ""
+      document.getElementById("errortxt").innerHTML = "gi oss tilbakemelding";
+      alert("3")
+    } else {
+      document.getElementById("error1").innerHTML = "error";
+      document.getElementById("riktig").innerHTML = ""
+      document.getElementById("errorra").innerHTML = "du må gi en vurdering";
+      document.getElementById("errortxt").innerHTML = "gi oss tilbakemelding";
+      alert("4")
+    }
+  }
+}
+function hallo() {
+  app.append("hello ")
+}
+function delet() {
+  db.collection("row").doc("DC").delete().then(() => {
+    console.log("Document successfully deleted!");
+  }).catch((error) => {
+    console.error("Error removing document: ", error);
+  });
+}
+</script>
+</body>
+</html>
