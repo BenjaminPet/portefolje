@@ -30,7 +30,7 @@ body {
     background-color: rgb(29, 29, 29);
 }
 .button {
-    background-color: whitesmoke;
+    background-color: green;
     margin: 0px; 
     padding: 20px;
     border-radius: 10px;
@@ -40,12 +40,12 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease 0s;
-    box-shadow: 5px 10px 10px rgba(255, 255, 255, 0.603);
+    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.603);
     border: 0px solid black;
 }
 .button:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 5px 10px 10px rgba(255, 251, 251, 0.226);
+    background-color: darkgreen;
+    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.226);
 }
 .title {
     background-color: black;;
