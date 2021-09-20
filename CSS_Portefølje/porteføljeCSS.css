@@ -150,3 +150,13 @@ a {
 .nextdiv .next{
     float: right;   
 }
+
+@media screen and (max-width: 800px) {
+    /* For mobile phones: */
+    .startbuttons {
+      width: 100%;
+    }
+    .startbuttons2 {
+        width: 100%;
+      }
+}
