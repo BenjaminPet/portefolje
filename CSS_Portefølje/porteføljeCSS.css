@@ -123,6 +123,7 @@ a {
 .next, .back {
     background-color: black;
     margin-top: 100px;
+    margin-bottom: 100px;
     padding: 30px;
     border-radius: 15px;
     color: whitesmoke;
