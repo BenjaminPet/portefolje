@@ -144,10 +144,10 @@ a {
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
 .next {
-    margin: 100px 0px 100px 100px;
+    margin: 100px 100px 100px 0px;
 }
 .back {
-    margin: 100px   100px 100px 0px;
+    margin: 100px 0px 100px 1000px;
 }
 .nextdiv {
     width: 100%;
