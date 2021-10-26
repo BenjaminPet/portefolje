@@ -35,7 +35,7 @@ body {
 .startbuttons:hover {
     background-color: rgb(29, 29, 29);
 }
-.button {
+.button { 
     background-color: green;
     position: fixed;
     bottom: 0;
