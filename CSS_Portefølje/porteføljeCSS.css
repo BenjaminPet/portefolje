@@ -10,7 +10,7 @@ body {
 
 .startbuttons2 {
     background-color: green;
-    margin: 0px; 
+    margin: 0px;
     padding: 20px;
     border: 0px;
     color: whitesmoke;
@@ -20,9 +20,10 @@ body {
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
     transition: all 0.3s ease 0s;
 }
+
 .startbuttons {
     background-color: black;
-    margin: 0px; 
+    margin: 0px;
     padding: 20px;
     border: 0px;
     color: whitesmoke;
@@ -32,14 +33,16 @@ body {
     font-weight: 500;
     transition: all 0.3s ease 0s;
 }
+
 .startbuttons:hover {
     background-color: rgb(29, 29, 29);
 }
-.button { 
+
+.button {
     background-color: green;
     position: relative;
     align-self: flex-end;
-    margin: 0px 10%; 
+    margin: 0px 10%;
     padding: 20px;
     border-radius: 10px;
     color: whitesmoke;
@@ -51,16 +54,19 @@ body {
     box-shadow: 5px 0px 10px rgba(255, 255, 255, 0.603);
     border: 0px solid black;
 }
+
 .button:hover {
     background-color: darkgreen;
-    color:rgb(179, 179, 179); 
+    color: rgb(179, 179, 179);
     box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.226);
 }
+
 .title {
     background-color: black;
     margin: 0px;
     padding: 0px;
 }
+
 .h1 {
     color: white;
     font-family: 'Share Tech Mono', monospace;
@@ -71,6 +77,7 @@ body {
     padding: 70px;
     text-align: center;
 }
+
 h1 {
     color: black;
     font-family: Arial, Helvetica, sans-serif;
@@ -80,6 +87,7 @@ h1 {
     padding: 70px;
     text-align: center;
 }
+
 h2 {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -87,6 +95,7 @@ h2 {
     font-weight: 500;
     margin: 50px;
 }
+
 h3 {
     color: black;
     font-family: Arial, Helvetica, sans-serif;
@@ -94,6 +103,7 @@ h3 {
     font-weight: 400;
     margin: 40px;
 }
+
 .boxtext {
     color: white;
     font-family: 'Courier New', Courier, monospace;
@@ -101,16 +111,19 @@ h3 {
     font-weight: 400;
     padding: 60px;
 }
+
 .box {
     background-color: rgb(20, 20, 20);
     margin: 30px;
     padding: 20px;
     border-radius: 10px;
-    display: flex; 
+    display: flex;
 }
+
 img {
     margin: 10px;
 }
+
 .profilbilde {
     width: 165px;
     height: 200px;
@@ -121,17 +134,21 @@ img {
     border-radius: 20px;
     display: flex;
 }
+
 a {
     margin: 100px;
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
 }
+
 .a {
     margin: 0px;
 }
-.next, .back {
-    background-color: black;    
+
+.next,
+.back {
+    background-color: black;
     padding: 30px;
     border-radius: 15px;
     color: whitesmoke;
@@ -142,36 +159,46 @@ a {
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
     transition: all 0.3s ease 0s;
 }
-.next:hover, .back:hover {
+
+.next:hover,
+.back:hover {
     background-color: rgba(0, 0, 0, 0.864);
     color: white;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
-.next:focus, .back:focus{
+
+.next:focus,
+.back:focus {
     border: 0px solid darkgray;
     background-color: red;
     color: white;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
+
 .next {
     margin: 100px 100px 100px 0px;
 }
+
 .back {
     margin: 100px 0px 100px 100px;
 }
+
 .nextdiv {
     width: 100%;
 }
-.nextdiv .next{
-    float: right;   
+
+.nextdiv .next {
+    float: right;
 }
 
 @media screen and (max-width: 800px) {
+
     /* For mobile phones: */
     .startbuttons {
-      width: 100%;
+        width: 100%;
     }
+
     .startbuttons2 {
         width: 100%;
-      }
+    }
 }
