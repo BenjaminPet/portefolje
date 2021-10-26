@@ -51,7 +51,7 @@ body {
 }
 .button:hover {
     background-color: darkgreen;
-    color: rgb(rgb(179, 179, 179), green, blue);
+    color:rgb(179, 179, 179);
     box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.226);
 }
 .title {
