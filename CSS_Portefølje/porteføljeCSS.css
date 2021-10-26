@@ -124,9 +124,6 @@ a {
     -moz-appearance: button;
     appearance: button;
 }
-a:hover {
-    color: whitesmoke;
-}
 .a {
     margin: 0px;
 }
