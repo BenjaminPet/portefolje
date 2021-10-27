@@ -1,6 +1,12 @@
+html, body {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 body {
-    margin: 0px;
-    padding: 0px;
     background-image: url(../Image_Portefølje/whitebackground.jpg);
     background-attachment: fixed;
     background-position: center;
@@ -38,11 +44,12 @@ body {
     background-color: rgb(29, 29, 29);
 }
 
+
+
 .button {
     background-color: green;
-    position: relative;
-    align-self: flex-end;
-    margin: 0px 10%;
+    margin-top: auto;
+    margin: 0;
     padding: 20px;
     border-radius: 10px;
     color: whitesmoke;
@@ -61,10 +68,26 @@ body {
     box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.226);
 }
 
+#dicee {
+    margin: -1% -5%;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+}
+#tindog {
+    margin: -1% -5%;
+    position: absolute;
+    left: 100%;
+    -ms-transform: translate(-100%);
+    transform: translate(-100%);
+}
+
 .title {
     background-color: black;
     margin: 0px;
     padding: 0px;
+    width: auto;
 }
 
 .h1 {
@@ -116,8 +139,9 @@ h3 {
     background-color: rgb(20, 20, 20);
     margin: 30px;
     padding: 20px;
+    max-width: 40%;
     border-radius: 10px;
-    display: flex;
+    position: relative;
 }
 
 img {
@@ -200,5 +224,9 @@ a {
 
     .startbuttons2 {
         width: 100%;
+    }
+    .box {
+        max-width: 100%;
+        width: 90%;
     }
 }
